@@ -1,0 +1,24 @@
+{
+    "name": "kgs/wb3",
+    "description": "the web3 in php",
+    "type": "library",
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "yukaige",
+            "email": "yukaige@yukaige.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Web3\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "PHP": "^7.0|^8.0",
+        "kornrunner/keccak": "^1.0",
+        "simplito/elliptic-php": "^1.0",
+        "guzzlehttp/guzzle": "6.3.3"
+    }
+}
