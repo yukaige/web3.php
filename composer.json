@@ -1,5 +1,5 @@
 {
-    "name": "kgs/wb3",
+    "name": "kgs/web3",
     "description": "A simple encapsulation of Web3 framework in PHP environment.\n",
     "type": "library",
     "keywords": ["eth", "web3", "contract", "sign", "usdt", "dai"],
