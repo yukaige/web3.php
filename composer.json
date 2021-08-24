@@ -1,8 +1,9 @@
 {
     "name": "kgs/wb3",
-    "description": "the web3 in php",
+    "description": "A simple encapsulation of Web3 framework in PHP environment.\n",
     "type": "library",
-    "license": "Apache",
+    "keywords": ["eth", "web3", "contract", "sign", "usdt", "dai"],
+    "license": "MIT",
     "authors": [
         {
             "name": "yukaige",
