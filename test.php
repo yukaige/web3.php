@@ -12,8 +12,10 @@ $web3 = new Web3('https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161');
 $contractAddress='0x7ef08Db1E4121b71177B828d5b5ff7a1BCB8305D';
 $contract = Contract::at($web3,$abi,$contractAddress);
 $toAccount = "0x6aba7cd6750225f9d732a256F0f334916C866264";
-$res =$contract->send($wallet,'transfer',[$toAccount,\Web3\Utils::ethToWei(1)]);
-echo $res;
+//$res =$contract->send($wallet,'transfer',[$toAccount,\Web3\Utils::ethToWei(1)]);
+//echo $res;
 //$start = \Web3\Utils::decToHex(bcsub(\Web3\Utils::hexToDec($web3->blockNumber()),999));
 //$res =$web3->getLogs($start,$web3->blockNumber(),$contractAddress);
 //var_dump($res);
+
+echo $res =$contract->call('balanceOf',[$toAccount]);

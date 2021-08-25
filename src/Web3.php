@@ -331,7 +331,7 @@ class Web3
      * @return mixed
      * @throws \Exception Returns: DATA - the return value of executed contract.
      */
-    public function call( $to, string $data = '0x0', $from = null, $gas = null, $value = null, $gasPrice = null)
+    public function call( $to, string $data = '0x0', $from = null, $gas = null, $value = null, $gasPrice = null,$quantity=Quantity::latest)
     {
         $data0 = [
             'to' => $to,
@@ -352,7 +352,7 @@ class Web3
         if (!empty($gasPrice)) {
             $data0['gasPrice'] = $gasPrice;
         }
-        return $this->request('eth_call', [$data0]);
+        return $this->request('eth_call', [$data0,$quantity]);
     }
 
     /**

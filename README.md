@@ -43,6 +43,8 @@ echo $res;
 //0x43b287554146748780d00af8c7d9d42c499ba03759b759f0f4244b072ec0cab2y
 echo  $contract->decodeEvent("0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef");
 //Transfer
+
+$res =$contract->call('balanceOf',[$toAccount]);
 ```
 
 
