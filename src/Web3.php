@@ -610,7 +610,7 @@ class Web3
     public function newFilter($fromBlock = null, $toBlock = null, $address = null, $topic = [])
     {
         $data = $this->getData($fromBlock, $toBlock, $address, $topic);
-        return $this->request('eth_newFilter', $data);
+        return $this->request('eth_newFilter', [$data]);
     }
 
     /**
@@ -689,10 +689,10 @@ class Web3
      * @throws \Exception
      * Returns: See eth_getFilterChanges
      */
-    public function getLogs($fromBlock = null, $toBlock = null, $address = null, $topic = [])
+    public function getLogs(string $fromBlock = null, string $toBlock = null, $address = null, $topic = [])
     {
         $data = $this->getData($fromBlock, $toBlock, $address, $topic);
-        return $this->request('eth_getLogs', $data);
+        return $this->request('eth_getLogs', [$data]);
     }
 
     /**
@@ -770,7 +770,7 @@ class Web3
     }
 
     public function request($method, $params = []){
-//        var_dump($params);
+
         $data = [
             'json' => [
                 'jsonrpc' => '2.0',
@@ -800,6 +800,8 @@ class Web3
 
         if (!empty($fromBlock)) {
             $data['fromBlock'] = $fromBlock;
+        }else{
+            $data['fromBlock'] ="0x0";
         }
         if (!empty($toBlock)) {
             $data['toBlock'] = $toBlock;

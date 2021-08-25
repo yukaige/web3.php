@@ -14,4 +14,6 @@ $contract = Contract::at($web3,$abi,$contractAddress);
 $toAccount = "0x6aba7cd6750225f9d732a256F0f334916C866264";
 $res =$contract->send($wallet,'transfer',[$toAccount,\Web3\Utils::ethToWei(1)]);
 echo $res;
-echo  $contract->decodeEvent("0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef");
+//$start = \Web3\Utils::decToHex(bcsub(\Web3\Utils::hexToDec($web3->blockNumber()),999));
+//$res =$web3->getLogs($start,$web3->blockNumber(),$contractAddress);
+//var_dump($res);
