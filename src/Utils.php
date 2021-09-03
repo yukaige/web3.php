@@ -229,4 +229,8 @@ class Utils
         }
         return (strpos($value, '0x') === 0);
     }
+
+    public static function hexToString($value){
+        return pack("H*",$value);
+    }
 }

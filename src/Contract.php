@@ -50,6 +50,16 @@ class Contract
         return $this->event[$name];
     }
 
+    public function getWeb3(): Web3
+    {
+        return $this->web3;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
     public function getFunctionByName($name): string
     {
         $inputs = $this->function[$name]['inputs'];
@@ -71,12 +81,15 @@ class Contract
     {
         return array_keys($this->event);
     }
-    public function decodeEvent($hash){
-        if(!array_key_exists($hash,$this->eventHash)){
-          throw  new \Exception("this hash not in the constract");
+
+    public function decodeEvent($hash)
+    {
+        if (!array_key_exists($hash, $this->eventHash)) {
+            throw  new \Exception("this hash not in the constract");
         }
         return $this->eventHash[$hash];
     }
+
     public function getAbi()
     {
         return $this->abi;
@@ -201,10 +214,10 @@ class Contract
         return Utils::sha3($functionName);
     }
 
-    public function call($function, $param = [],$quantity=Quantity::latest)
+    public function call($function, $param = [], $quantity = Quantity::latest)
     {
         $data = $this->getData($function, $param);
-        return $this->web3->call($data['to'], $data['data'],null,null,null,null,$quantity);
+        return $this->web3->call($data['to'], $data['data'], null, null, null, null, $quantity);
     }
 
 
