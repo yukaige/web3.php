@@ -49,7 +49,6 @@ class Utils
      */
     public static function fill0($str, $bit = 64)
     {
-        if (!strlen($str)) return "";
         $str_len = strlen($str);
         $zero = '';
         for ($i = $str_len; $i < $bit; $i++) {
