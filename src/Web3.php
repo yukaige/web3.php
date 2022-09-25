@@ -795,23 +795,31 @@ class Web3
      * @param $topic
      * @return array
      */
-    private function getData($fromBlock, $toBlock, $address, $topic): array
+        private function getData($fromBlock, $toBlock, $address, $topic): array
     {
         $data = [];
 
         if (!empty($fromBlock)) {
-            $data['fromBlock'] = $fromBlock;
-        }else{
-            $data['fromBlock'] ="0x0";
+            $data['fromBlock'] = utils::decToHex($fromBlock);
+        } else {
+            $data['fromBlock'] = "0x0";
         }
         if (!empty($toBlock)) {
-            $data['toBlock'] = $toBlock;
+            $data['toBlock'] =  utils::decToHex($toBlock);
         }
         if (!empty($address)) {
             $data['address'] = $address;
         }
         if (!empty($topic)) {
-            $data['topic'] = $topic;
+            $topic = array_map(function ($item) {
+                if (is_array($item)) {
+                    return array_map(function ($v) {
+                        return $v ? utils::fill0($v) : $v;
+                    }, $item);
+                } else
+                    return $item ? utils::fill0($item) : $item;
+            }, $topic);
+            $data['topics'] = $topic;
         }
         return $data;
     }
