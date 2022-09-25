@@ -394,6 +394,7 @@ class Web3
     /**
      * Returns information about a block by hash.
      * @param $hash
+     * @param $full If true it returns the full transaction objects, if false it returns only the hashes of the transactions.
      * @throws \Exception
      * Returns: Object - A block object, or null when no block was found:
      *              number: QUANTITY - the block number. null when its pending block.
@@ -416,10 +417,10 @@ class Web3
      *              transactions: Array - Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.
      *              uncles: Array - Array of uncle hashes.
      */
-    public function getBlockByHash($hash)
+    public function getBlockByHash($hash,$full=false)
     {
 
-        return $this->request('eth_getBlockByHash', [$hash]);
+        return $this->request('eth_getBlockByHash', [$hash,$full]);
     }
 
     /**
@@ -794,23 +795,31 @@ class Web3
      * @param $topic
      * @return array
      */
-    private function getData($fromBlock, $toBlock, $address, $topic): array
+        private function getData($fromBlock, $toBlock, $address, $topic): array
     {
         $data = [];
 
         if (!empty($fromBlock)) {
-            $data['fromBlock'] = $fromBlock;
-        }else{
-            $data['fromBlock'] ="0x0";
+            $data['fromBlock'] = utils::decToHex($fromBlock);
+        } else {
+            $data['fromBlock'] = "0x0";
         }
         if (!empty($toBlock)) {
-            $data['toBlock'] = $toBlock;
+            $data['toBlock'] =  utils::decToHex($toBlock);
         }
         if (!empty($address)) {
             $data['address'] = $address;
         }
         if (!empty($topic)) {
-            $data['topic'] = $topic;
+            $topic = array_map(function ($item) {
+                if (is_array($item)) {
+                    return array_map(function ($v) {
+                        return $v ? utils::fill0($v) : $v;
+                    }, $item);
+                } else
+                    return $item ? utils::fill0($item) : $item;
+            }, $topic);
+            $data['topics'] = $topic;
         }
         return $data;
     }
