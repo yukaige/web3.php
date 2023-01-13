@@ -1,4 +1,3 @@
-[![Security Status](https://www.murphysec.com/platform3/v3/badge/1609109630832615424.svg?t=1)](https://www.murphysec.com/accept?code=b4e2851fd117e098b153927748992e6f&type=1&from=2&t=2)
 # Web3
 
 A simple encapsulation of Web3 framework in PHP environment.
