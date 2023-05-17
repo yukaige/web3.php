@@ -4,7 +4,7 @@ A simple encapsulation of Web3 framework in PHP environment.
 
 # install
 ```bash
-composer require kgs/web3
+composer require kgs/web3:dev-master
 ```
 ## Usage
 ### web3
